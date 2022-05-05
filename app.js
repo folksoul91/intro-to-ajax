@@ -6,7 +6,17 @@
 /// 3. Using the Axios http client library (google it!)
 
 // creating a shortcut variable
+// VARIABLES
 const URL = "https://www.omdbapi.com/?apikey=a71b148a&t=Die+Hard";
+const $title = $("#title");
+const $year = $("#year");
+const $rating = $("#rated");
+// ELEMENT REFERENCES
+
+// EVENT LISTENERS
+
+// FUNCTIONS
+
 function handleGetData() {
   $.ajax(URL).then(
     function (data) {
