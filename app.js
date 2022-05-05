@@ -7,8 +7,15 @@
 
 // creating a shortcut variable
 const URL = "https://www.omdbapi.com/?apikey=a71b148a&t=Die+Hard";
-
-$.ajax(URL).then(function (data) {
-  console.log("Movie data is ready");
-  console.log(data);
-});
+function handleGetData() {
+  $.ajax(URL).then(
+    function (data) {
+      console.log("Movie data is ready");
+      console.log(data);
+    },
+    function (error) {
+      console.log("something is wrong");
+      console.log(error);
+    }
+  );
+}
