@@ -8,12 +8,12 @@
 // creating a shortcut variable
 // VARIABLES
 const URL = "https://www.omdbapi.com/?apikey=a71b148a&t=";
+let movieData, userInput;
 // ELEMENT REFERENCES
 const $title = $("#title");
 const $year = $("#year");
 const $rating = $("#rated");
-const $rating1 = $("#ratings1");
-const $rating2 = $("#ratings2");
+const $ratings = $("#ratings");
 const $form = $("form");
 const $input = $(`input[type='text']`);
 
@@ -29,18 +29,24 @@ function handleGetData(evt) {
     function (data) {
       console.log("Movie data is ready");
       console.log(data);
+      movieData = data;
+      render();
       // returning data once called
-      $title.text(data.Title); //grab jq var
-      $year.text(data.Year);
-      $rating.text(data.Rated);
-      $("main").prepend(`<img src='${data.Poster}'>`);
-      $rating1.text(data.Ratings[0].Source);
-      $rating2.text(data.Ratings[0].Value);
+      // $title.text(data.Title); //grab jq var
+      // $year.text(data.Year);
+      // $rating.text(data.Rated);
+      // $("main").prepend(`<img src='${data.Poster}'>`);
+      // $ratings.text(data.Ratings.Source);
     },
     function (error) {
       console.log("something is wrong");
       console.log(error);
     }
   );
+}
+function render() {
+  $title.text(movieData.Title);
+  $year.text(movieData.Year);
+  $rated.text(movieData.Rated);
 }
 // handleGetData();
