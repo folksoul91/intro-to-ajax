@@ -11,6 +11,7 @@ const URL = "https://www.omdbapi.com/?apikey=a71b148a&t=Die+Hard";
 const $title = $("#title");
 const $year = $("#year");
 const $rating = $("#rated");
+const $ratings = $("#ratings");
 // ELEMENT REFERENCES
 
 // EVENT LISTENERS
@@ -22,6 +23,12 @@ function handleGetData() {
     function (data) {
       console.log("Movie data is ready");
       console.log(data);
+      // returning data once called
+      $title.text(data.Title); //grab jq var
+      $year.text(data.Year);
+      $rating.text(data.Rated);
+      $("main").prepend(`<img src='${data.Poster}'>`);
+      $ratings.text(data.Ratings[0]);
     },
     function (error) {
       console.log("something is wrong");
@@ -29,3 +36,4 @@ function handleGetData() {
     }
   );
 }
+handleGetData();
